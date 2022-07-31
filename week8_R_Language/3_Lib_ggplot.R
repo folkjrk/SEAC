@@ -4,6 +4,7 @@ install.packages("ggplot2")
 
 
 library("ggplot2")
+
 data = read.csv("/Users/astroxjrk/Desktop/SEAC/week8_R_Language/data/winemag-data-130k-v2.csv", 
                 stringsAsFactors = FALSE)
 data_c <- data
@@ -44,6 +45,20 @@ plt<- plt +
 
 ##
 
-plt_2 <- ggplot(data_c, aes())
+plt_2 <- ggplot(data_c, aes(x=country, y=price)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+plt_2
 
+## Goal compare wine price between France and Swiss
+library("dplyr")
+hl <- data_c %>%
+  filter(country %in% c('France', 'Switzerland'))
+
+View(hl)
+
+hl_plt <- ggplot(hl, aes(x=country,y = price)) +
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))
+hl_plt
 
