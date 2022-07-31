@@ -2,7 +2,7 @@
 
 ### read and inspect data -------------
 ### input
-data = read.csv("data/winemag-data-130k-v2.csv", stringsAsFactors = FALSE)
+data = read.csv("/Users/astroxjrk/Desktop/SEAC/week8_R_Language/winemag-data-130k-v2.csv", stringsAsFactors = FALSE)
 # view data
 View(data)
 # number of rows and columns
@@ -26,7 +26,7 @@ data[data$region_1 %in% c("Sicilia", "Etna"),]
 ### calculating values --------------
 ### assigning filtered data to new items
 italy <- data[data$country=="Italy",]
-
+print(italy)
 ### calculating new column - point scaling
 italy$points_sc <- italy$points / 10
 
@@ -34,5 +34,5 @@ italy$points_sc <- italy$points / 10
 italy$point.range <- ifelse(italy$points>95, "High", "Low")
 
 ### save dataframe
-write.csv(italy, "data/italy_r.csv", row.names=FALSE)
+write.csv(italy, "/Users/astroxjrk/Desktop/SEAC/week8_R_Language/data/italy_r.csv", row.names=FALSE)
 
